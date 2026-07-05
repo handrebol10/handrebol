@@ -88,6 +88,25 @@
     font-size: 11px; font-weight:700; padding: 3px 9px; border-radius: 20px;
     margin-bottom: 10px; text-transform:uppercase; letter-spacing:.5px;
   }
+  .plan-note{
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
+    color: var(--accent-soft); font-size: 13px; font-weight:600;
+  }
+
+  .table-wrap{ overflow-x:auto; }
+  .price-table{
+    width:100%; border-collapse: collapse; background: var(--card);
+    border:1px solid var(--line); border-radius: 12px; overflow:hidden;
+  }
+  .price-table th, .price-table td{
+    padding: 12px 16px; text-align:left; font-size: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .price-table th{
+    color: var(--accent-soft); font-size: 12px; text-transform:uppercase;
+    letter-spacing: .5px;
+  }
+  .price-table tbody tr:last-child td{ border-bottom:none; }
 
   .contact{ text-align:center; padding: 40px 0 50px; }
   .contact h2{ color: var(--text-muted); }
@@ -164,43 +183,71 @@
     </section>
 
     <section>
+      <h2>Acompanhamento por frequência</h2>
+      <p class="muted">Valores aplicáveis ao Personal Training Online, Treino 50+/60+ e Alongamento. Atendimento de segunda a sexta (sem sábados, domingos e feriados).</p>
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead>
+            <tr><th>Frequência</th><th>Valor/sessão</th><th>Total/mês</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1x por semana</td><td>R$ 140</td><td>R$ 560</td></tr>
+            <tr><td>2x por semana</td><td>R$ 120</td><td>R$ 960</td></tr>
+            <tr><td>3x por semana</td><td>R$ 110</td><td>R$ 1.320</td></tr>
+            <tr><td>4x por semana</td><td>R$ 95</td><td>R$ 1.520</td></tr>
+            <tr><td>5x por semana</td><td>R$ 85</td><td>R$ 1.700</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
       <h2>Serviços disponíveis</h2>
       <div class="plans">
         <div class="plan featured">
           <span class="tag">Principal</span>
           <div class="plan-name">Personal Training Online</div>
-          <div class="plan-price">[VALOR]<span> /mês</span></div>
           <ul>
             <li>Periodização individualizada baseada em análise de dados</li>
             <li>Acompanhamento ao vivo por videochamada ou ligação de áudio</li>
             <li>Treino em casa ou na academia</li>
             <li>Ajustes conforme sua evolução</li>
           </ul>
+          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Treino 50+/60+</div>
-          <div class="plan-price">[VALOR]<span> /mês</span></div>
           <ul>
             <li>Treinos adaptados ao ritmo e às necessidades da idade</li>
             <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
             <li>Acompanhamento online</li>
           </ul>
+          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
+        </div>
+        <div class="plan">
+          <div class="plan-name">Alongamento</div>
+          <ul>
+            <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
+            <li>Foco em mobilidade e alívio de tensões</li>
+            <li>Presencial ou online</li>
+          </ul>
+          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Avaliação Física Presencial</div>
-          <div class="plan-price">[VALOR]<span> /avaliação</span></div>
+          <div class="plan-price">R$ 100</div>
           <ul>
             <li>Avaliação pontual, presencial</li>
             <li>Base para iniciar ou ajustar o treino</li>
           </ul>
         </div>
         <div class="plan">
-          <div class="plan-name">Alongamento</div>
-          <div class="plan-price">[VALOR]<span> /mês</span></div>
+          <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
+          <div class="plan-price">R$ 350</div>
           <ul>
-            <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
-            <li>Foco em mobilidade e alívio de tensões</li>
-            <li>Presencial ou online</li>
+            <li>Avaliação física completa</li>
+            <li>Periodização com 3 treinos, sem acompanhamento contínuo</li>
+            <li>Ideal para quem já sabe treinar e quer um treino de qualidade</li>
           </ul>
         </div>
       </div>
