@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>André Luiz Costa | Personal Trainer Online</title>
+<style>
+  :root{
+    --bg: #0f1115;
+    --bg-alt: #161a21;
+    --card: #1c212b;
+    --text: #eef1f5;
+    --text-muted: #a7b0bd;
+    --accent: #ff7a1a;
+    --accent-soft: #ffb37a;
+    --line: #2a3040;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  header.hero{
+    background: linear-gradient(160deg, #1a1e27 0%, #0f1115 70%);
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .avatar{
+    width: 92px; height: 92px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #ff4d4d);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 34px; font-weight:700; color:#fff;
+    margin: 0 auto 18px;
+    box-shadow: 0 0 0 4px rgba(255,122,26,0.15);
+  }
+  h1{ margin: 0 0 4px; font-size: 26px; letter-spacing: 0.3px; }
+  .role{ color: var(--accent-soft); font-weight:600; font-size: 15px; margin-bottom: 14px; }
+  .credentials{
+    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top: 10px;
+  }
+  .badge{
+    background: var(--card); border:1px solid var(--line);
+    color: var(--text-muted); font-size: 12.5px;
+    padding: 6px 12px; border-radius: 20px;
+  }
+
+  section{ padding: 34px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  h2{
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--accent-soft); margin: 0 0 16px;
+  }
+  p{ color: var(--text); margin: 0 0 12px; }
+  .muted{ color: var(--text-muted); }
+
+  .message-card{
+    background: var(--card); border:1px solid var(--line);
+    border-radius: 12px; padding: 24px 22px;
+  }
+  .message-card p:last-child{ margin-bottom:0; }
+  .signoff{ margin-top: 18px; color: var(--text-muted); font-style: italic; }
+
+  .steps{ list-style:none; margin:0; padding:0; }
+  .steps li{
+    display:flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line);
+  }
+  .steps li:first-child{ border-top:none; }
+  .step-num{
+    flex: 0 0 auto; width: 30px; height:30px; border-radius:50%;
+    background: rgba(255,122,26,0.12); color: var(--accent-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size: 13px;
+  }
+  .step-body strong{ display:block; margin-bottom: 2px; }
+
+  .plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 16px; }
+  .plan{
+    background: var(--card); border:1px solid var(--line); border-radius: 12px;
+    padding: 20px; display:flex; flex-direction:column;
+  }
+  .plan.featured{ border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .plan-name{ font-weight:700; font-size: 16px; margin-bottom: 4px; }
+  .plan-price{ color: var(--accent-soft); font-weight:700; font-size: 20px; margin-bottom: 12px; }
+  .plan-price span{ font-size: 12px; color: var(--text-muted); font-weight:400; }
+  .plan ul{ margin:0 0 0; padding-left: 18px; color: var(--text-muted); font-size: 14px; flex-grow:1; }
+  .plan ul li{ margin-bottom: 6px; }
+  .tag{
+    align-self:flex-start; background: var(--accent); color:#1a0f00;
+    font-size: 11px; font-weight:700; padding: 3px 9px; border-radius: 20px;
+    margin-bottom: 10px; text-transform:uppercase; letter-spacing:.5px;
+  }
+
+  .contact{ text-align:center; padding: 40px 0 50px; }
+  .contact h2{ color: var(--text-muted); }
+  .cta-row{ display:flex; gap: 12px; justify-content:center; flex-wrap:wrap; margin-top: 16px; }
+  .btn{
+    display:inline-block; padding: 12px 22px; border-radius: 8px;
+    text-decoration:none; font-weight:600; font-size: 14.5px;
+    border: 1px solid var(--line);
+  }
+  .btn-primary{ background: var(--accent); color:#1a0f00; border-color: var(--accent); }
+  .btn-outline{ color: var(--text); }
+  footer{ text-align:center; padding: 20px 0 30px; color: var(--text-muted); font-size: 12.5px; }
+
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f7f7f9; --bg-alt:#ffffff; --card:#ffffff;
+      --text:#1c212b; --text-muted:#5b6472; --line:#e4e6ec;
+    }
+    header.hero{ background: linear-gradient(160deg,#fff 0%, #f7f7f9 70%); }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="avatar">ALC</div>
+      <h1>André Luiz Costa</h1>
+      <div class="role">Personal Trainer &middot; Atendimento Online e Presencial</div>
+      <div class="credentials">
+        <span class="badge">Bacharel em Educação Física &ndash; UEPG</span>
+        <span class="badge">16 anos de experiência</span>
+        <span class="badge">Emagrecimento</span>
+        <span class="badge">Hipertrofia</span>
+        <span class="badge">Envelhecimento saudável</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section>
+      <h2>Mensagem</h2>
+      <div class="message-card">
+        <p>Olá, <strong>[NOME DA ALUNA]</strong>! Tudo bem?</p>
+        <p>Fiquei pensando aqui e acabei esquecendo de te perguntar antes: o que você achou do treino que montei para você? Qualquer dúvida, ajuste ou treino novo que precisar, é só me chamar &mdash; fico sempre à disposição.</p>
+        <p>Aproveitando, quero te contar uma novidade: agora estou atuando de forma independente, com atendimento 100% personalizado, online e presencial. Preparei uma <strong>periodização completa dividida em 3 treinos</strong>, com acompanhamento tanto para quem treina em casa quanto na academia, por áudio ou vídeo.</p>
+        <p>Abaixo explico direitinho como funciona cada etapa e as opções de acompanhamento disponíveis.</p>
+        <p class="signoff">Um abraço,<br>André</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como funciona a periodização de 3 treinos</h2>
+      <ul class="steps">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Avaliação e planejamento</strong>
+            <span class="muted">Levantamento do seu objetivo, rotina e histórico de treino para montar uma periodização sob medida, dividida em 3 treinos complementares (ex: A, B e C), trabalhando todos os grupos musculares de forma equilibrada.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>Execução guiada</strong>
+            <span class="muted">Cada treino é enviado com a técnica explicada em vídeo, para você executar com segurança tanto em casa quanto na academia.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>Acompanhamento por áudio e vídeo</strong>
+            <span class="muted">Envio de vídeos da sua execução para correção de postura e ajuste de carga, além de retorno por áudio tirando dúvidas ao longo da semana.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>Progressão e reavaliação</strong>
+            <span class="muted">A cada ciclo, os treinos são reajustados de acordo com sua evolução, mantendo o progresso constante em direção ao seu objetivo.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Planos disponíveis</h2>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-name">Online Essencial</div>
+          <div class="plan-price">[VALOR]<span> /mês</span></div>
+          <ul>
+            <li>Periodização com 3 treinos personalizados</li>
+            <li>Ajustes mensais de carga e progressão</li>
+            <li>Suporte por texto e áudio via WhatsApp</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <span class="tag">Mais escolhido</span>
+          <div class="plan-name">Online Plus</div>
+          <div class="plan-price">[VALOR]<span> /mês</span></div>
+          <ul>
+            <li>Tudo do plano Essencial</li>
+            <li>Correção de execução por vídeo semanal</li>
+            <li>Acompanhamento de evolução (fotos/medidas)</li>
+            <li>Ajustes de treino conforme necessidade</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <div class="plan-name">Híbrido (Presencial + Online)</div>
+          <div class="plan-price">[VALOR]<span> /mês</span></div>
+          <ul>
+            <li>Sessões presenciais periódicas na academia</li>
+            <li>Acompanhamento online nos demais dias</li>
+            <li>Tudo do plano Online Plus</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Vamos continuar treinando juntos?</h2>
+      <p class="muted">Fico à disposição para tirar qualquer dúvida sobre os treinos ou os planos.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/5551999910770">Chamar no WhatsApp</a>
+        <a class="btn btn-outline" href="https://instagram.com/personalonline_acosta">@personalonline_acosta</a>
+        <a class="btn btn-outline" href="mailto:handrebol25@gmail.com">handrebol25@gmail.com</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    André Luiz Costa &middot; Personal Trainer &middot; Bacharel em Educação Física (UEPG)
+  </footer>
+
+</body>
+</html>
