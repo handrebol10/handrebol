@@ -207,28 +207,53 @@
   .step-body strong{ display:block; margin-bottom: 3px; font-size: 15.5px; }
   .step-body span{ font-size: 14px; color: var(--ink-muted); }
 
-  /* ---------- Pricing ledger ---------- */
-  .table-wrap{ overflow-x:auto; border: 1px solid var(--line); border-radius: 4px; }
-  .price-table{
-    width:100%; border-collapse: collapse; background: var(--card);
+  /* ---------- Pricing cards ---------- */
+  .pricing-grid{
+    display:flex; align-items:flex-end; justify-content:center;
+    gap: 14px; flex-wrap:wrap;
+  }
+  .price-card{
+    position:relative; flex: 1 1 160px; max-width: 200px;
+    background: linear-gradient(160deg, #CB744A 0%, #7A3D1C 100%);
+    color: #FBF1E8; border-radius: 16px; padding: 22px 16px 22px;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    box-shadow: 0 14px 26px rgba(60,20,0,0.22);
+  }
+  .price-card.featured{
+    background: linear-gradient(160deg, #4C7A5E 0%, #23392C 100%);
+    transform: scale(1.08); z-index:2;
+    box-shadow: 0 18px 34px rgba(20,40,25,0.3);
+  }
+  .price-badge{
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background: var(--ink); color: var(--bg);
+    font-size: 10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+    padding: 4px 12px; border-radius: 20px; white-space:nowrap;
+  }
+  .price-pill{
+    background: rgba(0,0,0,0.28); border-radius: 20px;
+    padding: 5px 13px; font-size: 12px; font-weight:600;
+  }
+  .price-label{ font-size: 11.5px; opacity:0.8; margin-top: 14px; }
+  .price-big{
+    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+    font-size: 30px; font-weight:700; line-height:1.1; margin-top: 4px;
     font-variant-numeric: tabular-nums;
   }
-  .price-table th, .price-table td{
-    padding: 13px 18px; text-align:left; font-size: 14.5px;
-    border-bottom: 1px solid var(--line);
+  .price-big sup{ font-size: 13px; font-weight:400; }
+  .price-total{ font-size: 12px; opacity:0.85; margin-top: 4px; }
+  .price-features{
+    list-style:none; margin: 16px 0 0; padding:0; text-align:left; width:100%;
+    font-size: 12px;
   }
-  .price-table th{
-    color: var(--ink-muted); font-size: 11px; text-transform:uppercase;
-    letter-spacing: .8px; font-weight: 600;
+  .price-features li{ display:flex; gap:7px; margin-bottom: 8px; color: rgba(251,241,232,0.92); }
+  .price-features li::before{ content:"\2713"; font-weight:700; flex:0 0 auto; }
+
+  @media (max-width: 700px){
+    .pricing-grid{ flex-direction:column; align-items:stretch; }
+    .price-card{ max-width:none; }
+    .price-card.featured{ transform:none; }
   }
-  .price-table td:nth-child(2), .price-table td:nth-child(3),
-  .price-table th:nth-child(2), .price-table th:nth-child(3){ text-align: right; }
-  .price-table td:nth-child(2), .price-table td:nth-child(3){
-    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-  }
-  .price-table tbody tr:last-child td{ border-bottom:none; }
-  .price-table tbody tr:hover{ background: var(--accent-2-soft); }
-  .table-note{ margin-top: 12px; font-size: 13px; }
 
   /* ---------- Services ---------- */
   .plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; }
@@ -445,20 +470,64 @@
     <section>
       <div class="eyebrow">Investimento</div>
       <h2 style="font-size:20px; margin:0 0 6px;">Acompanhamento por frequência</h2>
-      <p class="lede" style="margin-bottom:20px;">Aplicável ao Personal Training Online, Treino 50+/60+ e Alongamento. Atendimento de segunda a sexta &mdash; sem sábados, domingos e feriados.</p>
-      <div class="table-wrap">
-        <table class="price-table">
-          <thead>
-            <tr><th>Frequência</th><th>Valor/sessão</th><th>Total/mês</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1&times; por semana</td><td>R$ 140</td><td>R$ 560</td></tr>
-            <tr><td>2&times; por semana</td><td>R$ 120</td><td>R$ 960</td></tr>
-            <tr><td>3&times; por semana</td><td>R$ 110</td><td>R$ 1.320</td></tr>
-            <tr><td>4&times; por semana</td><td>R$ 95</td><td>R$ 1.520</td></tr>
-            <tr><td>5&times; por semana</td><td>R$ 85</td><td>R$ 1.700</td></tr>
-          </tbody>
-        </table>
+      <p class="lede" style="margin-bottom:26px;">Aplicável ao Personal Training Online, Treino 50+/60+ e Alongamento. Atendimento de segunda a sexta &mdash; sem sábados, domingos e feriados.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-pill">1&times; por semana</div>
+          <div class="price-label">Por sessão</div>
+          <div class="price-big">R$ 140</div>
+          <div class="price-total">R$ 560 /mês</div>
+          <ul class="price-features">
+            <li>Acompanhamento ao vivo por vídeo ou áudio</li>
+            <li>Ajustes conforme sua evolução</li>
+            <li>Seg. a sex., sem taxa extra</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-pill">2&times; por semana</div>
+          <div class="price-label">Por sessão</div>
+          <div class="price-big">R$ 120</div>
+          <div class="price-total">R$ 960 /mês</div>
+          <ul class="price-features">
+            <li>Acompanhamento ao vivo por vídeo ou áudio</li>
+            <li>Ajustes conforme sua evolução</li>
+            <li>Seg. a sex., sem taxa extra</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">Mais escolhido</div>
+          <div class="price-pill">3&times; por semana</div>
+          <div class="price-label">Por sessão</div>
+          <div class="price-big">R$ 110</div>
+          <div class="price-total">R$ 1.320 /mês</div>
+          <ul class="price-features">
+            <li>Acompanhamento ao vivo por vídeo ou áudio</li>
+            <li>Ajustes conforme sua evolução</li>
+            <li>Seg. a sex., sem taxa extra</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-pill">4&times; por semana</div>
+          <div class="price-label">Por sessão</div>
+          <div class="price-big">R$ 95</div>
+          <div class="price-total">R$ 1.520 /mês</div>
+          <ul class="price-features">
+            <li>Acompanhamento ao vivo por vídeo ou áudio</li>
+            <li>Ajustes conforme sua evolução</li>
+            <li>Seg. a sex., sem taxa extra</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-pill">5&times; por semana</div>
+          <div class="price-label">Por sessão</div>
+          <div class="price-big">R$ 85</div>
+          <div class="price-total">R$ 1.700 /mês</div>
+          <ul class="price-features">
+            <li>Acompanhamento ao vivo por vídeo ou áudio</li>
+            <li>Ajustes conforme sua evolução</li>
+            <li>Seg. a sex., sem taxa extra</li>
+          </ul>
+        </div>
       </div>
     </section>
 
