@@ -203,6 +203,46 @@
     color: var(--accent); font-size: 12.5px; font-weight:600;
   }
 
+  /* ---------- Services carousel (cards passing) ---------- */
+  .carousel{ position:relative; }
+  .carousel-track{
+    position:relative; height: 380px; overflow:hidden;
+  }
+  .c-card{
+    position:absolute; top:50%; left:50%;
+    width: min(300px, 88%); margin:0;
+    transition: transform 0.7s cubic-bezier(.4,0,.2,1), opacity 0.6s ease, filter 0.6s ease;
+    cursor:pointer;
+  }
+  .c-card.active{ transform: translate(-50%,-50%) scale(1); filter:blur(0); opacity:1; z-index:3; cursor:default; }
+  .c-card.next{ transform: translate(22%,-50%) scale(0.8); filter: blur(3px); opacity:0.4; z-index:2; }
+  .c-card.previous{ transform: translate(-122%,-50%) scale(0.8); filter: blur(3px); opacity:0.4; z-index:2; }
+  .c-card.inactive{ transform: translate(-50%,-50%) scale(0.5); filter: blur(6px); opacity:0; z-index:1; pointer-events:none; }
+  @media (prefers-reduced-motion: reduce){
+    .c-card{ transition: opacity 0.2s ease; }
+  }
+  @media (max-width: 480px){
+    .carousel-track{ height: 420px; }
+  }
+
+  .car-btn{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:4;
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line); background:var(--card); color:var(--ink);
+    font-size:18px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .car-btn:hover{ background: var(--accent-2-soft); }
+  .car-btn.prev{ left:-6px; }
+  .car-btn.next{ right:-6px; }
+
+  .car-dots{ display:flex; justify-content:center; gap:8px; margin-top: 18px; }
+  .dot{
+    width:8px; height:8px; border-radius:50%; padding:0;
+    border:none; background:var(--line); cursor:pointer;
+  }
+  .dot.is-active{ background: var(--accent); }
+
   /* ---------- Contact ---------- */
   .contact .eyebrow::after{ display:none; }
   .cta-row{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 18px; }
@@ -327,73 +367,78 @@
 
     <section>
       <div class="eyebrow">Serviços</div>
-      <div class="plans">
-        <div class="plan featured">
-          <span class="tag">Principal</span>
-          <div class="plan-name">Personal Training Online</div>
-          <div class="mod-tags"><span class="mod-tag online">Online</span></div>
-          <ul>
-            <li>Periodização individualizada baseada em análise de dados</li>
-            <li>Acompanhamento ao vivo por videochamada ou ligação de áudio</li>
-            <li>Treino em casa ou na academia</li>
-            <li>Ajustes conforme sua evolução</li>
-          </ul>
-          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
+      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="Serviços">
+        <div class="carousel-track">
+          <div class="plan c-card featured">
+            <span class="tag">Principal</span>
+            <div class="plan-name">Personal Training Online</div>
+            <div class="mod-tags"><span class="mod-tag online">Online</span></div>
+            <ul>
+              <li>Periodização individualizada baseada em análise de dados</li>
+              <li>Acompanhamento ao vivo por videochamada ou ligação de áudio</li>
+              <li>Treino em casa ou na academia</li>
+              <li>Ajustes conforme sua evolução</li>
+            </ul>
+            <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Treino 50+/60+</div>
+            <div class="mod-tags"><span class="mod-tag online">Online</span></div>
+            <ul>
+              <li>Treinos adaptados ao ritmo e às necessidades da idade</li>
+              <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
+            </ul>
+            <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Alongamento</div>
+            <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
+            <ul>
+              <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
+              <li>Foco em mobilidade e alívio de tensões</li>
+            </ul>
+            <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Avaliação Física Presencial</div>
+            <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
+            <div class="plan-price">R$ 100</div>
+            <ul>
+              <li>Avaliação pontual</li>
+              <li>Base para iniciar ou ajustar o treino</li>
+            </ul>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
+            <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
+            <div class="plan-price">R$ 350</div>
+            <ul>
+              <li>Avaliação física completa</li>
+              <li>Periodização com 3 treinos, sem acompanhamento contínuo</li>
+              <li>Ideal para quem já sabe treinar e quer um treino de qualidade</li>
+            </ul>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Yoga (Hatha Yoga)</div>
+            <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
+            <ul>
+              <li>Aulas de Hatha Yoga individuais</li>
+              <li>Montagem de sequências personalizadas</li>
+            </ul>
+            <div class="plan-note">Valor a definir</div>
+          </div>
+          <div class="plan c-card">
+            <div class="plan-name">Atividades Aeróbicas</div>
+            <ul>
+              <li>Corrida, caminhada e treino em esteira</li>
+              <li>Orientação de ritmo, postura e progressão</li>
+            </ul>
+            <div class="plan-note">Valor a definir</div>
+          </div>
         </div>
-        <div class="plan">
-          <div class="plan-name">Treino 50+/60+</div>
-          <div class="mod-tags"><span class="mod-tag online">Online</span></div>
-          <ul>
-            <li>Treinos adaptados ao ritmo e às necessidades da idade</li>
-            <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
-          </ul>
-          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Alongamento</div>
-          <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
-          <ul>
-            <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
-            <li>Foco em mobilidade e alívio de tensões</li>
-          </ul>
-          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Avaliação Física Presencial</div>
-          <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
-          <div class="plan-price">R$ 100</div>
-          <ul>
-            <li>Avaliação pontual</li>
-            <li>Base para iniciar ou ajustar o treino</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
-          <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
-          <div class="plan-price">R$ 350</div>
-          <ul>
-            <li>Avaliação física completa</li>
-            <li>Periodização com 3 treinos, sem acompanhamento contínuo</li>
-            <li>Ideal para quem já sabe treinar e quer um treino de qualidade</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Yoga (Hatha Yoga)</div>
-          <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
-          <ul>
-            <li>Aulas de Hatha Yoga individuais</li>
-            <li>Montagem de sequências personalizadas</li>
-          </ul>
-          <div class="plan-note">Valor a definir</div>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Atividades Aeróbicas</div>
-          <ul>
-            <li>Corrida, caminhada e treino em esteira</li>
-            <li>Orientação de ritmo, postura e progressão</li>
-          </ul>
-          <div class="plan-note">Valor a definir</div>
-        </div>
+        <button type="button" class="car-btn prev" aria-label="Serviço anterior">&#8249;</button>
+        <button type="button" class="car-btn next" aria-label="Próximo serviço">&#8250;</button>
+        <div class="car-dots"></div>
       </div>
     </section>
 
@@ -411,6 +456,59 @@
       André Luiz Costa &middot; Personal Trainer &middot; Bacharel em Educação Física (UEPG)
     </footer>
   </div>
+
+  <script>
+    (function(){
+      var track = document.querySelector('.carousel-track');
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.c-card'));
+      var dotsWrap = document.querySelector('.car-dots');
+      var prevBtn = document.querySelector('.car-btn.prev');
+      var nextBtn = document.querySelector('.car-btn.next');
+      var n = cards.length;
+      var current = 0;
+
+      cards.forEach(function(_, i){
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', 'Ir para serviço ' + (i + 1));
+        dot.addEventListener('click', function(){ current = i; render(); });
+        dotsWrap.appendChild(dot);
+      });
+      var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.dot'));
+
+      function render(){
+        cards.forEach(function(card, i){
+          var rel = (i - current + n) % n;
+          card.classList.remove('active', 'next', 'previous', 'inactive');
+          if (rel === 0) card.classList.add('active');
+          else if (rel === 1) card.classList.add('next');
+          else if (rel === n - 1) card.classList.add('previous');
+          else card.classList.add('inactive');
+          card.setAttribute('aria-hidden', rel === 0 ? 'false' : 'true');
+        });
+        dots.forEach(function(d, i){ d.classList.toggle('is-active', i === current); });
+      }
+
+      cards.forEach(function(card, i){
+        card.addEventListener('click', function(){
+          if (card.classList.contains('next')) { current = (current + 1) % n; render(); }
+          else if (card.classList.contains('previous')) { current = (current - 1 + n) % n; render(); }
+        });
+      });
+
+      prevBtn.addEventListener('click', function(){ current = (current - 1 + n) % n; render(); });
+      nextBtn.addEventListener('click', function(){ current = (current + 1) % n; render(); });
+
+      track.tabIndex = 0;
+      track.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowLeft') { current = (current - 1 + n) % n; render(); }
+        if (e.key === 'ArrowRight') { current = (current + 1) % n; render(); }
+      });
+
+      render();
+    })();
+  </script>
 
 </body>
 </html>
