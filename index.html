@@ -69,9 +69,52 @@
 
   /* ---------- Header ---------- */
   header.hero{
-    padding: 52px 0 40px;
+    position:relative; overflow:hidden;
+    padding: 64px 0 48px;
     border-bottom: 1px solid var(--line);
   }
+  .hero-bg{
+    position:absolute; inset:-15%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(38% 45% at 12% 22%, #D9713C 0%, transparent 72%),
+      radial-gradient(42% 50% at 88% 12%, #5B4B7A 0%, transparent 72%),
+      radial-gradient(40% 48% at 80% 88%, #4C7A5E 0%, transparent 72%),
+      radial-gradient(36% 42% at 14% 92%, #C9962F 0%, transparent 72%);
+    filter: blur(60px);
+    opacity: 0.85;
+  }
+  @media (prefers-color-scheme: dark){ .hero-bg{ opacity: 0.5; } }
+  :root[data-theme="dark"] .hero-bg{ opacity: 0.5; }
+  :root[data-theme="light"] .hero-bg{ opacity: 0.85; }
+
+  header.hero > .wrap{ position:relative; z-index:1; }
+
+  .glass-card{
+    position:relative;
+    background: rgba(255,255,255,0.5);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 20px;
+    padding: 28px 26px 24px;
+    box-shadow: 0 10px 34px rgba(0,0,0,0.10);
+  }
+  @media (prefers-color-scheme: dark){
+    .glass-card{
+      background: rgba(18,20,18,0.45); border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] .glass-card{
+    background: rgba(18,20,18,0.45); border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 10px 34px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] .glass-card{
+    background: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.45);
+    box-shadow: 0 10px 34px rgba(0,0,0,0.10);
+  }
+  .glass-card .credentials{ border-top-color: rgba(127,127,127,0.28); }
+
   .hero-top{
     display:flex; align-items:flex-start; justify-content:space-between;
     gap: 20px; flex-wrap:wrap;
@@ -106,6 +149,13 @@
   }
   .badge:not(:last-child)::after{
     content: "·"; margin-left: 10px; color: var(--line);
+  }
+
+  @media (max-width: 480px){
+    header.hero{ padding: 40px 0 32px; }
+    .glass-card{ padding: 22px 20px 20px; }
+    .hero-top{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .portrait{ align-self:flex-start; }
   }
 
   /* ---------- Sections ---------- */
@@ -274,33 +324,38 @@
 </head>
 <body>
 
-  <div class="wrap">
-    <header class="hero">
-      <div class="hero-top">
-        <div class="hero-left">
-          <div class="mark">ALC</div>
-          <div>
-            <h1>André Luiz Costa</h1>
-            <div class="role">Personal Trainer &middot; Atendimento Online e Presencial</div>
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="glass-card">
+        <div class="hero-top">
+          <div class="hero-left">
+            <div class="mark">ALC</div>
+            <div>
+              <h1>André Luiz Costa</h1>
+              <div class="role">Personal Trainer &middot; Atendimento Online e Presencial</div>
+            </div>
+          </div>
+          <div class="portrait" aria-hidden="true">
+            <!-- Placeholder até a foto profissional ser enviada. Troque o conteúdo por: <img src="sua-foto.jpg" alt="André Luiz Costa"> -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
         </div>
-        <div class="portrait" aria-hidden="true">
-          <!-- Placeholder até a foto profissional ser enviada. Troque o conteúdo por: <img src="sua-foto.jpg" alt="André Luiz Costa"> -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <div class="credentials">
+          <span class="badge">Bacharel em Educação Física &ndash; UEPG</span>
+          <span class="badge">16 anos de experiência</span>
+          <span class="badge">Emagrecimento</span>
+          <span class="badge">Hipertrofia</span>
+          <span class="badge">Envelhecimento saudável</span>
         </div>
       </div>
-      <div class="credentials">
-        <span class="badge">Bacharel em Educação Física &ndash; UEPG</span>
-        <span class="badge">16 anos de experiência</span>
-        <span class="badge">Emagrecimento</span>
-        <span class="badge">Hipertrofia</span>
-        <span class="badge">Envelhecimento saudável</span>
-      </div>
-    </header>
+    </div>
+  </header>
 
+  <div class="wrap">
     <section>
       <div class="eyebrow">Como funciona</div>
       <div class="modalities">
