@@ -56,6 +56,37 @@
   }
   .wrap{ max-width: 720px; margin: 0 auto; padding: 0 22px; }
 
+  /* ---------- Sidebar navigation + paged sections ---------- */
+  .sidenav{
+    position: fixed; top:0; left:0; height:100vh; width: 72px; z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 8px; background: var(--card); border-right: 1px solid var(--line);
+  }
+  .side-link{
+    all: unset; box-sizing:border-box; cursor:pointer;
+    width:44px; height:44px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ink-muted);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .side-link svg{ width:20px; height:20px; }
+  .side-link:hover{ background: var(--accent-2-soft); color: var(--ink); }
+  .side-link.is-active{ background: var(--accent); color: var(--accent-on-accent); }
+  .side-link:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+
+  .pages{ margin-left: 72px; min-height:100vh; }
+  .page{ display:none; }
+  .page.is-active{ display:block; }
+
+  @media (max-width: 680px){
+    .sidenav{
+      top:auto; bottom:0; left:0; width:100%; height:auto;
+      flex-direction:row; justify-content:space-around;
+      padding: 6px; border-right:none; border-top:1px solid var(--line);
+    }
+    .pages{ margin-left:0; padding-bottom: 68px; }
+  }
+
   h1, h2, h3{
     font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
     text-wrap: balance;
@@ -456,6 +487,30 @@
 </head>
 <body>
 
+  <nav class="sidenav" aria-label="Seções da página">
+    <button type="button" class="side-link" data-page="inicio" aria-label="Início">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h5v-5h2v5h5v-9"/></svg>
+    </button>
+    <button type="button" class="side-link" data-page="como-funciona" aria-label="Como funciona">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg>
+    </button>
+    <button type="button" class="side-link" data-page="metodologia" aria-label="Metodologia">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="2"/><path d="M7.4 7.4l3.2 3.2M13.4 13.4l3.2 3.2"/></svg>
+    </button>
+    <button type="button" class="side-link" data-page="servicos" aria-label="Serviços">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
+    </button>
+    <button type="button" class="side-link" data-page="investimento" aria-label="Investimento">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8l10 10-8 8-10-10V3Z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </button>
+    <button type="button" class="side-link" data-page="contato" aria-label="Contato">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+    </button>
+  </nav>
+
+  <main class="pages">
+
+  <section class="page" data-page="inicio">
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap">
@@ -486,8 +541,10 @@
       </div>
     </div>
   </header>
+  </section>
 
   <div class="wrap">
+    <section class="page" data-page="como-funciona">
     <section>
       <div class="eyebrow">Como funciona</div>
       <div class="modalities">
@@ -514,7 +571,9 @@
         </div>
       </div>
     </section>
+    </section>
 
+    <section class="page" data-page="metodologia">
     <section>
       <div class="eyebrow">Metodologia</div>
       <h2 style="font-size:20px; margin:0 0 6px;">Método ACOSTA&reg;</h2>
@@ -719,7 +778,9 @@
         </div>
       </div>
     </section>
+    </section>
 
+    <section class="page" data-page="servicos">
     <section>
       <div class="eyebrow">Serviços</div>
       <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="Serviços">
@@ -803,7 +864,9 @@
         <div class="car-dots"></div>
       </div>
     </section>
+    </section>
 
+    <section class="page" data-page="investimento">
     <section>
       <div class="eyebrow">Investimento</div>
       <h2 style="font-size:20px; margin:0 0 6px;">Acompanhamento por frequência</h2>
@@ -867,7 +930,9 @@
         </div>
       </div>
     </section>
+    </section>
 
+    <section class="page" data-page="contato">
     <section class="contact">
       <div class="eyebrow">Contato</div>
       <p class="muted">Fico à disposição para tirar qualquer dúvida sobre os treinos ou os serviços.</p>
@@ -881,9 +946,34 @@
     <footer>
       André Luiz Costa &middot; Personal Trainer &middot; Bacharel em Educação Física (UEPG)
     </footer>
+    </section>
   </div>
+  </main>
 
   <script>
+    // Sidebar navigation — shows exactly one .page at a time, no page reload.
+    (function(){
+      var links = Array.prototype.slice.call(document.querySelectorAll('.side-link'));
+      var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+
+      function showPage(name){
+        pages.forEach(function(p){ p.classList.toggle('is-active', p.dataset.page === name); });
+        links.forEach(function(l){
+          var active = l.dataset.page === name;
+          l.classList.toggle('is-active', active);
+          if (active) l.setAttribute('aria-current', 'page');
+          else l.removeAttribute('aria-current');
+        });
+        window.scrollTo(0, 0);
+      }
+
+      links.forEach(function(link){
+        link.addEventListener('click', function(){ showPage(link.dataset.page); });
+      });
+
+      showPage('inicio');
+    })();
+
     // Método ACOSTA accordion — single-open, keyboard accessible, no external libs.
     (function(){
       var group = document.querySelector('[data-acosta]');
