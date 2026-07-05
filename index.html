@@ -274,6 +274,16 @@
     transition: transform 0.7s cubic-bezier(.4,0,.2,1), opacity 0.6s ease, filter 0.6s ease;
     cursor:pointer;
   }
+  .c-card::before, .c-card::after{
+    content:""; position:absolute; top:16%; bottom:16%; width:3px; border-radius:2px;
+  }
+  .c-card::before{ left:-11px; background:var(--accent); box-shadow:0 0 14px 1px var(--accent); }
+  .c-card::after{ right:-11px; background:var(--accent-2); box-shadow:0 0 14px 1px var(--accent-2); }
+  .c-index{
+    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+    font-weight:700; font-size: 13px; color: var(--accent-2);
+    letter-spacing: 1px; margin-bottom: 8px; font-variant-numeric: tabular-nums;
+  }
   .c-card.active{ transform: translate(-50%,-50%) scale(1); filter:blur(0); opacity:1; z-index:3; cursor:default; }
   .c-card.next{ transform: translate(22%,-50%) scale(0.8); filter: blur(3px); opacity:0.4; z-index:2; }
   .c-card.previous{ transform: translate(-122%,-50%) scale(0.8); filter: blur(3px); opacity:0.4; z-index:2; }
@@ -444,6 +454,7 @@
       <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="Serviços">
         <div class="carousel-track">
           <div class="plan c-card featured">
+            <div class="c-index">01</div>
             <span class="tag">Principal</span>
             <div class="plan-name">Personal Training Online</div>
             <div class="mod-tags"><span class="mod-tag online">Online</span></div>
@@ -456,6 +467,7 @@
             <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
           </div>
           <div class="plan c-card">
+            <div class="c-index">02</div>
             <div class="plan-name">Treino 50+/60+</div>
             <div class="mod-tags"><span class="mod-tag online">Online</span></div>
             <ul>
@@ -465,6 +477,7 @@
             <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
           </div>
           <div class="plan c-card">
+            <div class="c-index">03</div>
             <div class="plan-name">Alongamento</div>
             <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
             <ul>
@@ -474,6 +487,7 @@
             <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
           </div>
           <div class="plan c-card">
+            <div class="c-index">04</div>
             <div class="plan-name">Avaliação Física Presencial</div>
             <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
             <div class="plan-price">R$ 100</div>
@@ -483,6 +497,7 @@
             </ul>
           </div>
           <div class="plan c-card">
+            <div class="c-index">05</div>
             <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
             <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
             <div class="plan-price">R$ 350</div>
@@ -493,6 +508,7 @@
             </ul>
           </div>
           <div class="plan c-card">
+            <div class="c-index">06</div>
             <div class="plan-name">Yoga (Hatha Yoga)</div>
             <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
             <ul>
@@ -502,6 +518,7 @@
             <div class="plan-note">Valor a definir</div>
           </div>
           <div class="plan c-card">
+            <div class="c-index">07</div>
             <div class="plan-name">Atividades Aeróbicas</div>
             <ul>
               <li>Corrida, caminhada e treino em esteira</li>
