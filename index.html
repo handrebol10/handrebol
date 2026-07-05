@@ -204,99 +204,8 @@
   .muted{ color: var(--ink-muted); }
   .lede{ font-size: 15px; color: var(--ink-muted); max-width: 58ch; }
 
-  /* ---------- Modality cards (Online / Presencial) ---------- */
-  .modalities{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; }
-  .modality{
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 16px; padding: 22px 22px 24px;
-    border-top: 3px solid var(--m-color, var(--accent));
-  }
-  .modality.presencial{ --m-color: var(--accent-2); }
-  .modality-kicker{
-    font-size: 11.5px; text-transform: uppercase; letter-spacing: 1.2px;
-    color: var(--m-color, var(--accent)); font-weight: 700; margin-bottom: 6px;
-  }
-  .modality h3{ font-size: 20px; margin: 0 0 10px; }
-  .modality p{ font-size: 14.5px; color: var(--ink-muted); }
-  .modality ul{ margin: 14px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-muted); }
-  .modality ul li{ margin-bottom: 5px; }
-  .modality-note{
-    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
-    font-size: 12.5px; color: var(--ink-muted); font-style: italic;
-  }
-
-  /* ---------- Método ACOSTA cards (self-contained dark component, passing-cards carousel) ---------- */
-  .acosta{
-    --a-bg: #0B0B0B;
-    --a-card: #161616;
-    --a-border: #262626;
-    --a-text: #F5F5F5;
-    --a-text-muted: #A3A3A3;
-    --a-accent: #F97316;
-    --a-accent-soft: rgba(249,115,22,0.12);
-    background: var(--a-bg);
-    border-radius: 20px;
-    padding: 24px 8px;
-    margin-top: 22px;
-  }
-  .acosta-card{
-    background: var(--a-card);
-    border: 1px solid var(--a-border);
-    border-radius: 16px;
-    padding: 22px 20px;
-    color: var(--a-text);
-  }
-  .c-card.acosta-card{
-    transition: transform 0.7s cubic-bezier(.4,0,.2,1), opacity 0.6s ease, filter 0.6s ease, border-color 0.25s ease-out;
-  }
-  .acosta-card:hover{ border-color: var(--a-accent); }
-  .acosta-card:hover .acosta-icon{ transform: rotate(8deg); }
-  .acosta-card-head{ display:flex; align-items:center; gap:12px; margin-bottom: 14px; }
-  .acosta-icon{
-    flex: 0 0 auto; width: 40px; height: 40px; border-radius: 10px;
-    background: var(--a-accent-soft); color: var(--a-accent);
-    display:flex; align-items:center; justify-content:center;
-    transition: transform 0.3s ease-out;
-  }
-  .acosta-icon svg{ width:20px; height:20px; }
-  .acosta-title{ display:flex; align-items:baseline; gap:8px; }
-  .acosta-letter{
-    font-weight:700; color: var(--a-accent); font-size: 13px; letter-spacing:1px;
-  }
-  .acosta-word{ color: var(--a-text); font-weight:600; font-size: 16px; }
-  .acosta-tagline{ color: var(--a-text-muted); font-size: 13px; margin: 0 0 16px; }
-
-  .acosta-checklist{
-    display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-    gap: 8px 16px; margin: 0 0 16px; padding:0; list-style:none;
-  }
-  .acosta-checklist li{
-    display:flex; align-items:center; gap:8px;
-    color: var(--a-text); font-size: 13.5px;
-  }
-  .acosta-checklist li::before{
-    content:""; flex:0 0 auto; width:14px; height:14px; border-radius:50%;
-    background: var(--a-accent-soft);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F97316' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    background-size: 9px 9px; background-repeat:no-repeat; background-position:center;
-  }
-  .acosta-result{
-    border-top: 1px solid var(--a-border); padding-top: 14px;
-  }
-  .acosta-result-label{
-    display:block; font-size: 11px; text-transform:uppercase; letter-spacing:1.2px;
-    color: var(--a-accent); font-weight:700; margin-bottom: 4px;
-  }
-  .acosta-result p{ margin:0; color: var(--a-text); font-size: 14px; max-width:none; }
-
-  @media (max-width: 560px){
-    .acosta{ border-radius:16px; padding:16px 6px; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .acosta-card, .acosta-icon{ transition-duration: 0.01ms !important; }
-  }
-
-  /* ---------- Pricing cards ---------- */
+  /* ---------- Unified gradient card (pill + headline + checklist) ---------- */
+  /* Used by every card across Como funciona, Metodologia, Serviços and Investimento. */
   .price-card{
     background: linear-gradient(160deg, #CB744A 0%, #7A3D1C 100%);
     color: #FBF1E8; border-radius: 16px; padding: 24px 18px;
@@ -307,12 +216,19 @@
     background: linear-gradient(160deg, #4C7A5E 0%, #23392C 100%);
     box-shadow: 0 18px 34px rgba(20,40,25,0.3);
   }
+  .price-card.dark{
+    background: linear-gradient(160deg, #2A2A2A 0%, #0B0B0B 100%);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+  }
+  .price-card.dark .price-pill{ background: rgba(249,115,22,0.22); color:#FFB27A; }
+  .price-card.dark .price-features li::before{ color:#F97316; }
   .price-badge{
     position:absolute; top:-13px; left:50%; transform:translateX(-50%);
     background: var(--ink); color: var(--bg);
     font-size: 10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
     padding: 4px 12px; border-radius: 20px; white-space:nowrap;
   }
+  .price-pills{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
   .price-pill{
     background: rgba(0,0,0,0.28); border-radius: 20px;
     padding: 5px 13px; font-size: 12px; font-weight:600;
@@ -324,6 +240,10 @@
     font-variant-numeric: tabular-nums;
   }
   .price-big sup{ font-size: 13px; font-weight:400; }
+  .price-heading{
+    font-family: Georgia, serif; font-size: 19px; font-weight:600;
+    line-height:1.25; margin-top: 10px;
+  }
   .price-total{ font-size: 12px; opacity:0.85; margin-top: 4px; }
   .price-features{
     list-style:none; margin: 16px 0 0; padding:0; text-align:left; width:100%;
@@ -331,37 +251,9 @@
   }
   .price-features li{ display:flex; gap:7px; margin-bottom: 8px; color: rgba(251,241,232,0.92); }
   .price-features li::before{ content:"\2713"; font-weight:700; flex:0 0 auto; }
-
-  /* ---------- Services ---------- */
-  .plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; }
-  .plan{
-    background: var(--card); border:1px solid var(--line); border-radius: 16px;
-    padding: 20px 22px; display:flex; flex-direction:column;
-  }
-  .plan.featured{ border-color: var(--accent); }
-  .plan-name{ font-family: Georgia, serif; font-size: 17px; margin-bottom: 8px; }
-  .mod-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom: 12px; }
-  .mod-tag{
-    font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px;
-    padding: 3px 8px; border-radius: 3px; border: 1px solid currentColor;
-  }
-  .mod-tag.online{ color: var(--accent); }
-  .mod-tag.presencial{ color: var(--accent-2); }
-  .plan-price{
-    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
-    color: var(--accent); font-weight:600; font-size: 19px; margin-bottom: 12px;
-    font-variant-numeric: tabular-nums;
-  }
-  .plan ul{ margin:0; padding-left: 18px; color: var(--ink-muted); font-size: 13.5px; flex-grow:1; }
-  .plan ul li{ margin-bottom: 6px; }
-  .tag{
-    align-self:flex-start; background: var(--accent); color: var(--accent-on-accent);
-    font-size: 10.5px; font-weight:700; padding: 3px 9px; border-radius: 3px;
-    margin-bottom: 12px; text-transform:uppercase; letter-spacing:.6px;
-  }
-  .plan-note{
-    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
-    color: var(--accent); font-size: 12.5px; font-weight:600;
+  .price-foot{
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.18);
+    width:100%; font-size: 12.5px; opacity:0.9;
   }
 
   /* ---------- Passing-cards carousel (reused by every section) ---------- */
@@ -495,30 +387,26 @@
     <section class="page" data-page="como-funciona">
     <section>
       <div class="eyebrow">Como funciona</div>
-      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="modalidade" style="--ct-height:560px; --ct-height-mobile:640px; --ct-width:320px;">
+      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="modalidade" style="--ct-height:390px; --ct-height-mobile:430px; --ct-width:280px;">
         <div class="carousel-track">
-          <div class="modality c-card online">
-            <div class="c-index">01</div>
-            <div class="modality-kicker">Onde você estiver</div>
-            <h3>Online</h3>
-            <p>Atendimento ao vivo por videochamada ou ligação de áudio &mdash; você escolhe o formato com que se sente mais à vontade. Funciona no seu horário, em casa ou na academia, com orientação em tempo real durante o treino.</p>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pill">Online</div>
+            <div class="price-label">Onde você estiver</div>
+            <ul class="price-features" style="margin-top:16px;">
               <li>Videochamada ou ligação de áudio, como preferir</li>
               <li>Você treina em casa ou na academia</li>
               <li>Correção de execução e ajustes em tempo real</li>
             </ul>
           </div>
-          <div class="modality c-card presencial">
-            <div class="c-index">02</div>
-            <div class="modality-kicker">Encontro pessoal</div>
-            <h3>Presencial</h3>
-            <p>O atendimento presencial acontece em parques, clubes, na sua casa ou na academia de sua preferência, sempre combinado previamente. Contato direto, com observação mais detalhada da sua postura e mobilidade.</p>
-            <ul>
+          <div class="c-card price-card featured">
+            <div class="price-pill">Presencial</div>
+            <div class="price-label">Encontro pessoal</div>
+            <ul class="price-features" style="margin-top:16px;">
               <li>Local combinado previamente com você</li>
               <li>Contato direto e feedback imediato</li>
               <li>Observação detalhada de postura e mobilidade</li>
             </ul>
-            <div class="modality-note">Taxas de acesso (academia, clube), uniforme e outras eventuais taxas do local escolhido são acrescentadas ao valor mensal.</div>
+            <div class="price-foot">Taxas de acesso (academia, clube), uniforme e outras eventuais taxas do local escolhido são acrescentadas ao valor mensal.</div>
           </div>
         </div>
         <button type="button" class="car-btn prev" aria-label="Modalidade anterior">&#8249;</button>
@@ -533,129 +421,79 @@
       <div class="eyebrow">Metodologia</div>
       <h2 style="font-size:20px; margin:0 0 6px;">Método ACOSTA&reg;</h2>
       <p class="lede">Um sistema de acompanhamento personalizado que evolui junto com você.</p>
-      <div class="acosta">
-        <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="etapa do método" style="--ct-height:440px; --ct-height-mobile:520px; --ct-width:300px;">
-          <div class="carousel-track">
+      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="etapa do método" style="--ct-height:360px; --ct-height-mobile:400px; --ct-width:280px;">
+        <div class="carousel-track">
 
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1Z"/><rect x="5" y="6" width="14" height="15" rx="2"/><path d="M9 12h6M9 16h6"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">A</span><span class="acosta-word">Avaliar</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Conhecemos você antes de montar qualquer treino.</p>
-              <ul class="acosta-checklist">
-                <li>Anamnese</li>
-                <li>Avaliação física</li>
-                <li>Histórico e objetivos</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Você recebe uma estratégia totalmente personalizada.</p>
-              </div>
-            </div>
-
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">C</span><span class="acosta-word">Construir</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Montamos a estratégia certa para o seu momento.</p>
-              <ul class="acosta-checklist">
-                <li>Periodização individualizada</li>
-                <li>Progressões bem definidas</li>
-                <li>Metas de curto e longo prazo</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Um plano estruturado, feito sob medida para o seu objetivo.</p>
-              </div>
-            </div>
-
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor" stroke="none"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">O</span><span class="acosta-word">Orientar</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Cada exercício explicado com técnica e segurança.</p>
-              <ul class="acosta-checklist">
-                <li>Explicação de cada exercício</li>
-                <li>Vídeos demonstrativos</li>
-                <li>Correção de postura</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Você treina com técnica correta desde o primeiro dia.</p>
-              </div>
-            </div>
-
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">S</span><span class="acosta-word">Supervisionar</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Feedback e suporte sempre que você precisar.</p>
-              <ul class="acosta-checklist">
-                <li>Acompanhamento por vídeo/áudio</li>
-                <li>Feedback ao longo da semana</li>
-                <li>Suporte para dúvidas</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Você nunca treina sozinho ou sem direção.</p>
-              </div>
-            </div>
-
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l5-6 4 3 6-8"/><path d="M15 6h4v4"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">T</span><span class="acosta-word">Transformar</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Seu treino evolui junto com o seu corpo.</p>
-              <ul class="acosta-checklist">
-                <li>Evolução de cargas e volume</li>
-                <li>Prevenção de estagnação</li>
-                <li>Novos estímulos por ciclo</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Seu treino evolui sem platôs, no seu ritmo.</p>
-              </div>
-            </div>
-
-            <div class="c-card acosta-card">
-              <div class="acosta-card-head">
-                <span class="acosta-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5v2a3 3 0 0 0 3 3M16 5h3v2a3 3 0 0 1-3 3"/><path d="M12 13v3M9 20h6M10 17h4v3h-4v-3Z"/></svg>
-                </span>
-                <span class="acosta-title"><span class="acosta-letter">A</span><span class="acosta-word">Acompanhar</span></span>
-              </div>
-              <p class="acosta-tagline" style="white-space:normal;">Reavaliação constante para manter o progresso.</p>
-              <ul class="acosta-checklist">
-                <li>Reavaliações periódicas</li>
-                <li>Ajuste de estratégia</li>
-                <li>Suporte contínuo a longo prazo</li>
-              </ul>
-              <div class="acosta-result">
-                <span class="acosta-result-label">Resultado</span>
-                <p>Seu progresso se mantém sustentável ao longo do tempo.</p>
-              </div>
-            </div>
-
+          <div class="c-card price-card dark">
+            <div class="price-pill">A &middot; Avaliar</div>
+            <div class="price-label">Conhecemos você antes de montar qualquer treino.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Anamnese</li>
+              <li>Avaliação física</li>
+              <li>Histórico e objetivos</li>
+            </ul>
+            <div class="price-foot">Resultado: você recebe uma estratégia totalmente personalizada.</div>
           </div>
-          <button type="button" class="car-btn prev" aria-label="Etapa anterior">&#8249;</button>
-          <button type="button" class="car-btn next" aria-label="Próxima etapa">&#8250;</button>
-          <div class="car-dots"></div>
+
+          <div class="c-card price-card dark">
+            <div class="price-pill">C &middot; Construir</div>
+            <div class="price-label">Montamos a estratégia certa para o seu momento.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Periodização individualizada</li>
+              <li>Progressões bem definidas</li>
+              <li>Metas de curto e longo prazo</li>
+            </ul>
+            <div class="price-foot">Resultado: um plano estruturado, feito sob medida para o seu objetivo.</div>
+          </div>
+
+          <div class="c-card price-card dark">
+            <div class="price-pill">O &middot; Orientar</div>
+            <div class="price-label">Cada exercício explicado com técnica e segurança.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Explicação de cada exercício</li>
+              <li>Vídeos demonstrativos</li>
+              <li>Correção de postura</li>
+            </ul>
+            <div class="price-foot">Resultado: você treina com técnica correta desde o primeiro dia.</div>
+          </div>
+
+          <div class="c-card price-card dark">
+            <div class="price-pill">S &middot; Supervisionar</div>
+            <div class="price-label">Feedback e suporte sempre que você precisar.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Acompanhamento por vídeo/áudio</li>
+              <li>Feedback ao longo da semana</li>
+              <li>Suporte para dúvidas</li>
+            </ul>
+            <div class="price-foot">Resultado: você nunca treina sozinho ou sem direção.</div>
+          </div>
+
+          <div class="c-card price-card dark">
+            <div class="price-pill">T &middot; Transformar</div>
+            <div class="price-label">Seu treino evolui junto com o seu corpo.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Evolução de cargas e volume</li>
+              <li>Prevenção de estagnação</li>
+              <li>Novos estímulos por ciclo</li>
+            </ul>
+            <div class="price-foot">Resultado: seu treino evolui sem platôs, no seu ritmo.</div>
+          </div>
+
+          <div class="c-card price-card dark">
+            <div class="price-pill">A &middot; Acompanhar</div>
+            <div class="price-label">Reavaliação constante para manter o progresso.</div>
+            <ul class="price-features" style="margin-top:16px;">
+              <li>Reavaliações periódicas</li>
+              <li>Ajuste de estratégia</li>
+              <li>Suporte contínuo a longo prazo</li>
+            </ul>
+            <div class="price-foot">Resultado: seu progresso se mantém sustentável ao longo do tempo.</div>
+          </div>
+
         </div>
+        <button type="button" class="car-btn prev" aria-label="Etapa anterior">&#8249;</button>
+        <button type="button" class="car-btn next" aria-label="Próxima etapa">&#8250;</button>
+        <div class="car-dots"></div>
       </div>
     </section>
     </section>
@@ -663,80 +501,72 @@
     <section class="page" data-page="servicos">
     <section>
       <div class="eyebrow">Serviços</div>
-      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="Serviços">
+      <div class="carousel" role="group" aria-roledescription="carrossel" aria-label="Serviços" style="--ct-height:350px; --ct-height-mobile:400px; --ct-width:280px;">
         <div class="carousel-track">
-          <div class="plan c-card featured">
-            <div class="c-index">01</div>
-            <span class="tag">Principal</span>
-            <div class="plan-name">Personal Training Online</div>
-            <div class="mod-tags"><span class="mod-tag online">Online</span></div>
-            <ul>
+          <div class="c-card price-card featured">
+            <div class="price-badge">Principal</div>
+            <div class="price-pill">Online</div>
+            <div class="price-heading">Personal Training Online</div>
+            <ul class="price-features" style="margin-top:14px;">
               <li>Periodização individualizada baseada em análise de dados</li>
-              <li>Acompanhamento ao vivo por videochamada ou ligação de áudio</li>
               <li>Treino em casa ou na academia</li>
               <li>Ajustes conforme sua evolução</li>
             </ul>
-            <div class="plan-note">Valor conforme frequência &mdash; ver tabela abaixo</div>
+            <div class="price-foot">Valor conforme frequência &mdash; ver tabela abaixo</div>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">02</div>
-            <div class="plan-name">Treino 50+/60+</div>
-            <div class="mod-tags"><span class="mod-tag online">Online</span></div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pill">Online</div>
+            <div class="price-heading">Treino 50+/60+</div>
+            <ul class="price-features" style="margin-top:14px;">
               <li>Treinos adaptados ao ritmo e às necessidades da idade</li>
               <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
             </ul>
-            <div class="plan-note">Valor conforme frequência &mdash; ver tabela abaixo</div>
+            <div class="price-foot">Valor conforme frequência &mdash; ver tabela abaixo</div>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">03</div>
-            <div class="plan-name">Alongamento</div>
-            <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pills"><span class="price-pill">Online</span><span class="price-pill">Presencial</span></div>
+            <div class="price-heading">Alongamento</div>
+            <ul class="price-features" style="margin-top:14px;">
               <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
               <li>Foco em mobilidade e alívio de tensões</li>
             </ul>
-            <div class="plan-note">Valor conforme frequência &mdash; ver tabela abaixo</div>
+            <div class="price-foot">Valor conforme frequência &mdash; ver tabela abaixo</div>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">04</div>
-            <div class="plan-name">Avaliação Física Presencial</div>
-            <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
-            <div class="plan-price">R$ 100</div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pill">Presencial</div>
+            <div class="price-label">Avaliação Física Presencial</div>
+            <div class="price-big">R$ 100</div>
+            <ul class="price-features">
               <li>Avaliação pontual</li>
               <li>Base para iniciar ou ajustar o treino</li>
             </ul>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">05</div>
-            <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
-            <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
-            <div class="plan-price">R$ 350</div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pill">Presencial</div>
+            <div class="price-label">Consultoria &mdash; Avaliação + 3 Treinos</div>
+            <div class="price-big">R$ 350</div>
+            <ul class="price-features">
               <li>Avaliação física completa</li>
-              <li>Periodização com 3 treinos, sem acompanhamento contínuo</li>
-              <li>Ideal para quem já sabe treinar e quer um treino de qualidade</li>
+              <li>Periodização, sem acompanhamento contínuo</li>
+              <li>Ideal para quem já sabe treinar</li>
             </ul>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">06</div>
-            <div class="plan-name">Yoga (Hatha Yoga)</div>
-            <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-pills"><span class="price-pill">Online</span><span class="price-pill">Presencial</span></div>
+            <div class="price-heading">Yoga (Hatha Yoga)</div>
+            <ul class="price-features" style="margin-top:14px;">
               <li>Aulas de Hatha Yoga individuais</li>
               <li>Montagem de sequências personalizadas</li>
             </ul>
-            <div class="plan-note">Valor a definir</div>
+            <div class="price-foot">Valor a definir</div>
           </div>
-          <div class="plan c-card">
-            <div class="c-index">07</div>
-            <div class="plan-name">Atividades Aeróbicas</div>
-            <ul>
+          <div class="c-card price-card">
+            <div class="price-heading" style="margin-top:0;">Atividades Aeróbicas</div>
+            <ul class="price-features" style="margin-top:14px;">
               <li>Corrida, caminhada e treino em esteira</li>
               <li>Orientação de ritmo, postura e progressão</li>
             </ul>
-            <div class="plan-note">Valor a definir</div>
+            <div class="price-foot">Valor a definir</div>
           </div>
         </div>
         <button type="button" class="car-btn prev" aria-label="Serviço anterior">&#8249;</button>
