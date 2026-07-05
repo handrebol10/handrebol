@@ -3,139 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Luiz Costa | Personal Trainer Online</title>
+<title>André Luiz Costa | Personal Trainer</title>
 <style>
   :root{
-    --bg: #0f1115;
-    --bg-alt: #161a21;
-    --card: #1c212b;
-    --text: #eef1f5;
-    --text-muted: #a7b0bd;
-    --accent: #ff7a1a;
-    --accent-soft: #ffb37a;
-    --line: #2a3040;
+    --bg: #E9E5DA;
+    --card: #F5F2E9;
+    --ink: #22261E;
+    --ink-muted: #5E6353;
+    --line: #D7D1BF;
+    --accent: #8C4426;
+    --accent-on-accent: #FBF1E8;
+    --accent-2: #3C5A44;
+    --accent-2-soft: #DCE5DA;
+    --focus: #2453A6;
   }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #15181A;
+      --card: #1B2020;
+      --ink: #ECE8DC;
+      --ink-muted: #9AA096;
+      --line: #2B3130;
+      --accent: #E08A5B;
+      --accent-on-accent: #241206;
+      --accent-2: #7CB79A;
+      --accent-2-soft: #20302A;
+      --focus: #79A6E8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #15181A; --card: #1B2020; --ink: #ECE8DC; --ink-muted: #9AA096;
+    --line: #2B3130; --accent: #E08A5B; --accent-on-accent: #241206;
+    --accent-2: #7CB79A; --accent-2-soft: #20302A; --focus: #79A6E8;
+  }
+  :root[data-theme="light"]{
+    --bg: #E9E5DA; --card: #F5F2E9; --ink: #22261E; --ink-muted: #5E6353;
+    --line: #D7D1BF; --accent: #8C4426; --accent-on-accent: #FBF1E8;
+    --accent-2: #3C5A44; --accent-2-soft: #DCE5DA; --focus: #2453A6;
+  }
+
   *{ box-sizing: border-box; }
+  html{ background: var(--bg); }
   body{
     margin:0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
+    color: var(--ink);
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 22px; }
 
+  h1, h2, h3{
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    text-wrap: balance;
+    font-weight: 400;
+  }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--focus); outline-offset: 2px;
+  }
+
+  /* ---------- Header ---------- */
   header.hero{
-    background: linear-gradient(160deg, #1a1e27 0%, #0f1115 70%);
-    padding: 48px 0 36px;
+    padding: 52px 0 40px;
     border-bottom: 1px solid var(--line);
-    text-align: center;
   }
-  .avatar{
-    width: 92px; height: 92px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #ff4d4d);
+  .hero-top{
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .mark{
+    flex: 0 0 auto; width: 58px; height: 58px; border-radius: 4px;
+    background: var(--accent); color: var(--accent-on-accent);
     display:flex; align-items:center; justify-content:center;
-    font-size: 34px; font-weight:700; color:#fff;
-    margin: 0 auto 18px;
-    box-shadow: 0 0 0 4px rgba(255,122,26,0.15);
+    font-family: Georgia, serif; font-size: 22px; font-weight:700;
   }
-  h1{ margin: 0 0 4px; font-size: 26px; letter-spacing: 0.3px; }
-  .role{ color: var(--accent-soft); font-weight:600; font-size: 15px; margin-bottom: 14px; }
+  h1{ margin: 0; font-size: 30px; letter-spacing: 0.2px; }
+  .role{
+    color: var(--ink-muted); font-size: 14.5px; margin-top: 3px;
+    letter-spacing: 0.2px;
+  }
   .credentials{
-    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top: 10px;
+    display:flex; flex-wrap:wrap; gap: 8px 10px; margin-top: 22px;
+    padding-top: 20px; border-top: 1px solid var(--line);
   }
   .badge{
-    background: var(--card); border:1px solid var(--line);
-    color: var(--text-muted); font-size: 12.5px;
-    padding: 6px 12px; border-radius: 20px;
+    color: var(--ink-muted); font-size: 12.5px;
+    padding: 0; position: relative;
+  }
+  .badge:not(:last-child)::after{
+    content: "·"; margin-left: 10px; color: var(--line);
   }
 
-  section{ padding: 34px 0; border-bottom: 1px solid var(--line); }
+  /* ---------- Sections ---------- */
+  section{ padding: 40px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
-  h2{
-    font-size: 13px; text-transform: uppercase; letter-spacing: 1.4px;
-    color: var(--accent-soft); margin: 0 0 16px;
+  .eyebrow{
+    display:flex; align-items:baseline; gap: 10px;
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--accent-2); font-weight: 600; margin: 0 0 20px;
   }
-  p{ color: var(--text); margin: 0 0 12px; }
-  .muted{ color: var(--text-muted); }
+  .eyebrow::after{
+    content: ""; flex: 1 1 auto; height: 1px; background: var(--line);
+  }
+  p{ margin: 0 0 12px; max-width: 62ch; }
+  .muted{ color: var(--ink-muted); }
+  .lede{ font-size: 15px; color: var(--ink-muted); max-width: 58ch; }
 
+  /* ---------- Modality cards (Online / Presencial) ---------- */
+  .modalities{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; }
+  .modality{
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 4px; padding: 22px 22px 24px;
+    border-top: 3px solid var(--m-color, var(--accent));
+  }
+  .modality.presencial{ --m-color: var(--accent-2); }
+  .modality-kicker{
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--m-color, var(--accent)); font-weight: 700; margin-bottom: 6px;
+  }
+  .modality h3{ font-size: 20px; margin: 0 0 10px; }
+  .modality p{ font-size: 14.5px; color: var(--ink-muted); }
+  .modality ul{ margin: 14px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-muted); }
+  .modality ul li{ margin-bottom: 5px; }
+
+  /* ---------- Periodization steps (real sequence -> numbered) ---------- */
   .steps{ list-style:none; margin:0; padding:0; }
   .steps li{
-    display:flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line);
+    display:flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line);
   }
-  .steps li:first-child{ border-top:none; }
+  .steps li:first-child{ border-top:none; padding-top:0; }
   .step-num{
-    flex: 0 0 auto; width: 30px; height:30px; border-radius:50%;
-    background: rgba(255,122,26,0.12); color: var(--accent-soft);
-    display:flex; align-items:center; justify-content:center;
-    font-weight:700; font-size: 13px;
+    flex: 0 0 auto; width: 26px; padding-top: 2px;
+    font-family: Georgia, serif; font-size: 15px; color: var(--accent);
+    font-variant-numeric: tabular-nums;
   }
-  .step-body strong{ display:block; margin-bottom: 2px; }
+  .step-body strong{ display:block; margin-bottom: 3px; font-size: 15.5px; }
+  .step-body span{ font-size: 14px; color: var(--ink-muted); }
 
-  .plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 16px; }
-  .plan{
-    background: var(--card); border:1px solid var(--line); border-radius: 12px;
-    padding: 20px; display:flex; flex-direction:column;
-  }
-  .plan.featured{ border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-  .plan-name{ font-weight:700; font-size: 16px; margin-bottom: 4px; }
-  .plan-price{ color: var(--accent-soft); font-weight:700; font-size: 20px; margin-bottom: 12px; }
-  .plan-price span{ font-size: 12px; color: var(--text-muted); font-weight:400; }
-  .plan ul{ margin:0 0 0; padding-left: 18px; color: var(--text-muted); font-size: 14px; flex-grow:1; }
-  .plan ul li{ margin-bottom: 6px; }
-  .tag{
-    align-self:flex-start; background: var(--accent); color:#1a0f00;
-    font-size: 11px; font-weight:700; padding: 3px 9px; border-radius: 20px;
-    margin-bottom: 10px; text-transform:uppercase; letter-spacing:.5px;
-  }
-  .plan-note{
-    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
-    color: var(--accent-soft); font-size: 13px; font-weight:600;
-  }
-
-  .table-wrap{ overflow-x:auto; }
+  /* ---------- Pricing ledger ---------- */
+  .table-wrap{ overflow-x:auto; border: 1px solid var(--line); border-radius: 4px; }
   .price-table{
     width:100%; border-collapse: collapse; background: var(--card);
-    border:1px solid var(--line); border-radius: 12px; overflow:hidden;
+    font-variant-numeric: tabular-nums;
   }
   .price-table th, .price-table td{
-    padding: 12px 16px; text-align:left; font-size: 14px;
+    padding: 13px 18px; text-align:left; font-size: 14.5px;
     border-bottom: 1px solid var(--line);
   }
   .price-table th{
-    color: var(--accent-soft); font-size: 12px; text-transform:uppercase;
-    letter-spacing: .5px;
+    color: var(--ink-muted); font-size: 11px; text-transform:uppercase;
+    letter-spacing: .8px; font-weight: 600;
+  }
+  .price-table td:nth-child(2), .price-table td:nth-child(3),
+  .price-table th:nth-child(2), .price-table th:nth-child(3){ text-align: right; }
+  .price-table td:nth-child(2), .price-table td:nth-child(3){
+    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   }
   .price-table tbody tr:last-child td{ border-bottom:none; }
+  .price-table tbody tr:hover{ background: var(--accent-2-soft); }
+  .table-note{ margin-top: 12px; font-size: 13px; }
 
-  .contact{ text-align:center; padding: 40px 0 50px; }
-  .contact h2{ color: var(--text-muted); }
-  .cta-row{ display:flex; gap: 12px; justify-content:center; flex-wrap:wrap; margin-top: 16px; }
-  .btn{
-    display:inline-block; padding: 12px 22px; border-radius: 8px;
-    text-decoration:none; font-weight:600; font-size: 14.5px;
-    border: 1px solid var(--line);
+  /* ---------- Services ---------- */
+  .plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; }
+  .plan{
+    background: var(--card); border:1px solid var(--line); border-radius: 4px;
+    padding: 20px 22px; display:flex; flex-direction:column;
   }
-  .btn-primary{ background: var(--accent); color:#1a0f00; border-color: var(--accent); }
-  .btn-outline{ color: var(--text); }
-  footer{ text-align:center; padding: 20px 0 30px; color: var(--text-muted); font-size: 12.5px; }
+  .plan.featured{ border-color: var(--accent); }
+  .plan-name{ font-family: Georgia, serif; font-size: 17px; margin-bottom: 10px; }
+  .plan-price{
+    font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+    color: var(--accent); font-weight:600; font-size: 19px; margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .plan ul{ margin:0; padding-left: 18px; color: var(--ink-muted); font-size: 13.5px; flex-grow:1; }
+  .plan ul li{ margin-bottom: 6px; }
+  .tag{
+    align-self:flex-start; background: var(--accent); color: var(--accent-on-accent);
+    font-size: 10.5px; font-weight:700; padding: 3px 9px; border-radius: 3px;
+    margin-bottom: 12px; text-transform:uppercase; letter-spacing:.6px;
+  }
+  .plan-note{
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
+    color: var(--accent); font-size: 12.5px; font-weight:600;
+  }
 
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#f7f7f9; --bg-alt:#ffffff; --card:#ffffff;
-      --text:#1c212b; --text-muted:#5b6472; --line:#e4e6ec;
-    }
-    header.hero{ background: linear-gradient(160deg,#fff 0%, #f7f7f9 70%); }
+  /* ---------- Contact ---------- */
+  .contact .eyebrow::after{ display:none; }
+  .cta-row{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 18px; }
+  .btn{
+    display:inline-block; padding: 11px 20px; border-radius: 3px;
+    text-decoration:none; font-weight:600; font-size: 14px;
+    border: 1px solid var(--line);
+    transition: transform 0.15s ease;
+  }
+  @media (prefers-reduced-motion: reduce){ .btn{ transition: none; } }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background: var(--accent); color: var(--accent-on-accent); border-color: var(--accent); }
+  .btn-outline{ color: var(--ink); }
+
+  footer{
+    padding: 22px 0 40px; color: var(--ink-muted); font-size: 12px;
   }
 </style>
 </head>
 <body>
 
-  <header class="hero">
-    <div class="wrap">
-      <div class="avatar">ALC</div>
-      <h1>André Luiz Costa</h1>
-      <div class="role">Personal Trainer &middot; Atendimento Online e Presencial</div>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="mark">ALC</div>
+        <div>
+          <h1>André Luiz Costa</h1>
+          <div class="role">Personal Trainer &middot; Atendimento Online e Presencial</div>
+        </div>
+      </div>
       <div class="credentials">
         <span class="badge">Bacharel em Educação Física &ndash; UEPG</span>
         <span class="badge">16 anos de experiência</span>
@@ -143,66 +229,93 @@
         <span class="badge">Hipertrofia</span>
         <span class="badge">Envelhecimento saudável</span>
       </div>
-    </div>
-  </header>
-
-  <div class="wrap">
+    </header>
 
     <section>
-      <h2>Como funciona a periodização de 3 treinos</h2>
-      <ul class="steps">
+      <div class="eyebrow">Como funciona</div>
+      <div class="modalities">
+        <div class="modality online">
+          <div class="modality-kicker">Onde você estiver</div>
+          <h3>Online</h3>
+          <p>Atendimento ao vivo por videochamada ou ligação de áudio &mdash; você escolhe o formato com que se sente mais à vontade. Funciona no seu horário, em casa ou na academia, com orientação em tempo real durante o treino.</p>
+          <ul>
+            <li>Videochamada ou ligação de áudio, como preferir</li>
+            <li>Você treina em casa ou na academia</li>
+            <li>Correção de execução e ajustes em tempo real</li>
+            <li>Vale para Personal Training, Treino 50+/60+ e Alongamento</li>
+          </ul>
+        </div>
+        <div class="modality presencial">
+          <div class="modality-kicker">Encontro pessoal</div>
+          <h3>Presencial</h3>
+          <p>Para a avaliação física e as sessões de alongamento, o atendimento acontece pessoalmente &mdash; com contato direto e observação mais detalhada da sua postura e mobilidade.</p>
+          <ul>
+            <li>Avaliação Física Presencial</li>
+            <li>Sessões de Alongamento presenciais</li>
+            <li>Observação direta de postura e mobilidade</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">Metodologia</div>
+      <h2 style="font-size:20px; margin:0 0 6px;">Periodização em 3 treinos</h2>
+      <p class="lede">Como funciona, do primeiro contato até o ajuste contínuo.</p>
+      <ul class="steps" style="margin-top:22px;">
         <li>
           <div class="step-num">1</div>
           <div class="step-body">
             <strong>Avaliação e planejamento</strong>
-            <span class="muted">Levantamento do seu objetivo, rotina e histórico de treino para montar uma periodização sob medida, dividida em 3 treinos complementares (ex: A, B e C), trabalhando todos os grupos musculares de forma equilibrada.</span>
+            <span>Levantamento do seu objetivo, rotina e histórico de treino para montar uma periodização sob medida, dividida em 3 treinos complementares (A, B e C), trabalhando todos os grupos musculares de forma equilibrada.</span>
           </div>
         </li>
         <li>
           <div class="step-num">2</div>
           <div class="step-body">
             <strong>Execução guiada</strong>
-            <span class="muted">Cada treino é enviado com a técnica explicada em vídeo, para você executar com segurança tanto em casa quanto na academia.</span>
+            <span>Cada treino é enviado com a técnica explicada em vídeo, para você executar com segurança tanto em casa quanto na academia.</span>
           </div>
         </li>
         <li>
           <div class="step-num">3</div>
           <div class="step-body">
             <strong>Acompanhamento por áudio e vídeo</strong>
-            <span class="muted">Envio de vídeos da sua execução para correção de postura e ajuste de carga, além de retorno por áudio tirando dúvidas ao longo da semana.</span>
+            <span>Envio de vídeos da sua execução para correção de postura e ajuste de carga, além de retorno por áudio tirando dúvidas ao longo da semana.</span>
           </div>
         </li>
         <li>
           <div class="step-num">4</div>
           <div class="step-body">
             <strong>Progressão e reavaliação</strong>
-            <span class="muted">A cada ciclo, os treinos são reajustados de acordo com sua evolução, mantendo o progresso constante em direção ao seu objetivo.</span>
+            <span>A cada ciclo, os treinos são reajustados de acordo com sua evolução, mantendo o progresso constante em direção ao seu objetivo.</span>
           </div>
         </li>
       </ul>
     </section>
 
     <section>
-      <h2>Acompanhamento por frequência</h2>
-      <p class="muted">Valores aplicáveis ao Personal Training Online, Treino 50+/60+ e Alongamento. Atendimento de segunda a sexta (sem sábados, domingos e feriados).</p>
+      <div class="eyebrow">Investimento</div>
+      <h2 style="font-size:20px; margin:0 0 6px;">Acompanhamento por frequência</h2>
+      <p class="lede" style="margin-bottom:20px;">Aplicável ao Personal Training Online, Treino 50+/60+ e Alongamento. Atendimento de segunda a sexta &mdash; sem sábados, domingos e feriados.</p>
       <div class="table-wrap">
         <table class="price-table">
           <thead>
             <tr><th>Frequência</th><th>Valor/sessão</th><th>Total/mês</th></tr>
           </thead>
           <tbody>
-            <tr><td>1x por semana</td><td>R$ 140</td><td>R$ 560</td></tr>
-            <tr><td>2x por semana</td><td>R$ 120</td><td>R$ 960</td></tr>
-            <tr><td>3x por semana</td><td>R$ 110</td><td>R$ 1.320</td></tr>
-            <tr><td>4x por semana</td><td>R$ 95</td><td>R$ 1.520</td></tr>
-            <tr><td>5x por semana</td><td>R$ 85</td><td>R$ 1.700</td></tr>
+            <tr><td>1&times; por semana</td><td>R$ 140</td><td>R$ 560</td></tr>
+            <tr><td>2&times; por semana</td><td>R$ 120</td><td>R$ 960</td></tr>
+            <tr><td>3&times; por semana</td><td>R$ 110</td><td>R$ 1.320</td></tr>
+            <tr><td>4&times; por semana</td><td>R$ 95</td><td>R$ 1.520</td></tr>
+            <tr><td>5&times; por semana</td><td>R$ 85</td><td>R$ 1.700</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section>
-      <h2>Serviços disponíveis</h2>
+      <div class="eyebrow">Serviços</div>
       <div class="plans">
         <div class="plan featured">
           <span class="tag">Principal</span>
@@ -213,7 +326,7 @@
             <li>Treino em casa ou na academia</li>
             <li>Ajustes conforme sua evolução</li>
           </ul>
-          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
+          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Treino 50+/60+</div>
@@ -222,7 +335,7 @@
             <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
             <li>Acompanhamento online</li>
           </ul>
-          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
+          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Alongamento</div>
@@ -231,7 +344,7 @@
             <li>Foco em mobilidade e alívio de tensões</li>
             <li>Presencial ou online</li>
           </ul>
-          <div class="plan-note">Valor conforme frequência semanal &mdash; ver tabela acima</div>
+          <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Avaliação Física Presencial</div>
@@ -254,8 +367,8 @@
     </section>
 
     <section class="contact">
-      <h2>Vamos continuar treinando juntos?</h2>
-      <p class="muted">Fico à disposição para tirar qualquer dúvida sobre os treinos ou os planos.</p>
+      <div class="eyebrow">Contato</div>
+      <p class="muted">Fico à disposição para tirar qualquer dúvida sobre os treinos ou os serviços.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://wa.me/5551999910770">Chamar no WhatsApp</a>
         <a class="btn btn-outline" href="https://instagram.com/personalonline_acosta">@personalonline_acosta</a>
@@ -263,11 +376,10 @@
       </div>
     </section>
 
+    <footer>
+      André Luiz Costa &middot; Personal Trainer &middot; Bacharel em Educação Física (UEPG)
+    </footer>
   </div>
-
-  <footer>
-    André Luiz Costa &middot; Personal Trainer &middot; Bacharel em Educação Física (UEPG)
-  </footer>
 
 </body>
 </html>
