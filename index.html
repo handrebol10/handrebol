@@ -178,7 +178,14 @@
     padding: 20px 22px; display:flex; flex-direction:column;
   }
   .plan.featured{ border-color: var(--accent); }
-  .plan-name{ font-family: Georgia, serif; font-size: 17px; margin-bottom: 10px; }
+  .plan-name{ font-family: Georgia, serif; font-size: 17px; margin-bottom: 8px; }
+  .mod-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom: 12px; }
+  .mod-tag{
+    font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px;
+    padding: 3px 8px; border-radius: 3px; border: 1px solid currentColor;
+  }
+  .mod-tag.online{ color: var(--accent); }
+  .mod-tag.presencial{ color: var(--accent-2); }
   .plan-price{
     font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
     color: var(--accent); font-weight:600; font-size: 19px; margin-bottom: 12px;
@@ -246,17 +253,16 @@
             <li>Videochamada ou ligação de áudio, como preferir</li>
             <li>Você treina em casa ou na academia</li>
             <li>Correção de execução e ajustes em tempo real</li>
-            <li>Vale para Personal Training, Treino 50+/60+ e Alongamento</li>
           </ul>
         </div>
         <div class="modality presencial">
           <div class="modality-kicker">Encontro pessoal</div>
           <h3>Presencial</h3>
-          <p>Para a avaliação física e as sessões de alongamento, o atendimento acontece pessoalmente &mdash; em parques, clubes, na sua casa ou na academia de sua preferência, sempre combinado previamente. Contato direto, com observação mais detalhada da sua postura e mobilidade.</p>
+          <p>O atendimento presencial acontece em parques, clubes, na sua casa ou na academia de sua preferência, sempre combinado previamente. Contato direto, com observação mais detalhada da sua postura e mobilidade.</p>
           <ul>
-            <li>Avaliação Física Presencial</li>
-            <li>Sessões de Alongamento presenciais</li>
-            <li>Observação direta de postura e mobilidade</li>
+            <li>Local combinado previamente com você</li>
+            <li>Contato direto e feedback imediato</li>
+            <li>Observação detalhada de postura e mobilidade</li>
           </ul>
           <div class="modality-note">Taxas de acesso (academia, clube), uniforme e outras eventuais taxas do local escolhido são acrescentadas ao valor mensal.</div>
         </div>
@@ -325,6 +331,7 @@
         <div class="plan featured">
           <span class="tag">Principal</span>
           <div class="plan-name">Personal Training Online</div>
+          <div class="mod-tags"><span class="mod-tag online">Online</span></div>
           <ul>
             <li>Periodização individualizada baseada em análise de dados</li>
             <li>Acompanhamento ao vivo por videochamada ou ligação de áudio</li>
@@ -335,32 +342,34 @@
         </div>
         <div class="plan">
           <div class="plan-name">Treino 50+/60+</div>
+          <div class="mod-tags"><span class="mod-tag online">Online</span></div>
           <ul>
             <li>Treinos adaptados ao ritmo e às necessidades da idade</li>
             <li>Foco em saúde, mobilidade e envelhecimento ativo</li>
-            <li>Acompanhamento online</li>
           </ul>
           <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Alongamento</div>
+          <div class="mod-tags"><span class="mod-tag online">Online</span><span class="mod-tag presencial">Presencial</span></div>
           <ul>
             <li>Trabalho com trilhos anatômicos e liberação miofascial</li>
             <li>Foco em mobilidade e alívio de tensões</li>
-            <li>Presencial ou online</li>
           </ul>
           <div class="plan-note">Valor conforme frequência &mdash; ver tabela acima</div>
         </div>
         <div class="plan">
           <div class="plan-name">Avaliação Física Presencial</div>
+          <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
           <div class="plan-price">R$ 100</div>
           <ul>
-            <li>Avaliação pontual, presencial</li>
+            <li>Avaliação pontual</li>
             <li>Base para iniciar ou ajustar o treino</li>
           </ul>
         </div>
         <div class="plan">
           <div class="plan-name">Consultoria &mdash; Avaliação + 3 Treinos</div>
+          <div class="mod-tags"><span class="mod-tag presencial">Presencial</span></div>
           <div class="plan-price">R$ 350</div>
           <ul>
             <li>Avaliação física completa</li>
